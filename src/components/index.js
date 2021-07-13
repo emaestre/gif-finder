@@ -1,3 +1,5 @@
 import App from './App';
+import GifList from './GifList';
+import SearchBar from './SearchBar';
 
-export { App };
+export { App, GifList, SearchBar };

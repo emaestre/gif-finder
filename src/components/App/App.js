@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { like, unlike, selectLikedGifs } from 'reducers/likedGifsSlice';
+import React, { useCallback, useState } from 'react';
+import { Box, Container } from '@material-ui/core';
+
+import { GifList, SearchBar } from 'components';
 
 function App() {
-    const likedGifs = useSelector(selectLikedGifs);
-    const dispatch = useDispatch();
-    const [searchedGifs, setSearchedGifs] = useState([]);
+    const [termToSearch, setTermToSearch] = useState('');
 
-    return <div>Gif Finder</div>;
+    const handleSearch = useCallback((searchTerm) => {
+        setTermToSearch(searchTerm);
+    }, []);
+
+    return (
+        <Box>
+            <Container maxWidth={false}>
+                <SearchBar onSearch={handleSearch} />
+                <GifList termToSearch={termToSearch} />
+            </Container>
+        </Box>
+    );
 }
 
 export default App;

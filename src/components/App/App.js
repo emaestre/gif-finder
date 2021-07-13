@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Paper } from '@material-ui/core';
 
 import { GifList, SearchBar } from 'components';
 
@@ -12,10 +12,12 @@ function App() {
 
     return (
         <Box>
-            <Container maxWidth={false}>
-                <SearchBar onSearch={handleSearch} />
-                <GifList termToSearch={termToSearch} />
-            </Container>
+            <Paper>
+                <Container maxWidth={false}>
+                    <SearchBar onSearch={handleSearch} />
+                    <GifList termToSearch={termToSearch} />
+                </Container>
+            </Paper>
         </Box>
     );
 }

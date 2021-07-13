@@ -38,10 +38,10 @@ function GifList(props) {
 
     return (
         <div>
-            <ImageList rowHeight={250}>
+            <ImageList cols={4}>
                 {fetchedGifs.map((gif) => (
                     <ImageListItem key={gif.id}>
-                        <img src={gif.images.original.url} alt={gif.title} />
+                        <img src={gif.images.downsized.url} alt={gif.title} />
                         <ImageListItemBar
                             title={gif.title}
                             subtitle={<span>by: {gif.username}</span>}

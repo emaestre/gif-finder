@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
+    link: {
+        textDecoration: 'none',
+    },
     searchField: {
         borderRadius: 15,
     },

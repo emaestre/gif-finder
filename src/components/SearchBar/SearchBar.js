@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Button, Grid, InputAdornment, TextField } from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
 
 import useStyles from './SearchBar.styles';
 
@@ -31,7 +34,7 @@ function SearchBar(props) {
         <div className={classes.root}>
             <form onSubmit={handleSubmit} {...restProps}>
                 <Grid container spacing={2}>
-                    <Grid item md={10} xs={6}>
+                    <Grid item md={8} xs={6}>
                         <TextField
                             placeholder="Giphy Term"
                             type="search"
@@ -43,6 +46,11 @@ function SearchBar(props) {
                                 classes: {
                                     input: classes.searchInput,
                                 },
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                                ),
                             }}
                             fullWidth
                         />
@@ -57,10 +65,25 @@ function SearchBar(props) {
                             Search for GIF
                         </Button>
                     </Grid>
+                    <Grid item md={2} xs={12}>
+                        <Link className={classes.link} to="/liked">
+                            <Button
+                                className={classes.searchButton}
+                                variant="outlined"
+                                color="primary"
+                            >
+                                My Saved GIFs
+                            </Button>
+                        </Link>
+                    </Grid>
                 </Grid>
             </form>
         </div>
     );
 }
+
+SearchBar.propTypes = {
+    onSearch: PropTypes.func.isRequired,
+};
 
 export default SearchBar;

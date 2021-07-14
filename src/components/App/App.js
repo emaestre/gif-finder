@@ -1,21 +1,24 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Box, Container, Paper } from '@material-ui/core';
 
-import { GifList, SearchBar } from 'components';
+import { GifFinder, LikedGifs } from 'components';
 
 function App() {
-    const [termToSearch, setTermToSearch] = useState('');
-
-    const handleSearch = useCallback((searchTerm) => {
-        setTermToSearch(searchTerm);
-    }, []);
-
     return (
         <Box>
             <Paper>
                 <Container maxWidth={false}>
-                    <SearchBar onSearch={handleSearch} />
-                    <GifList termToSearch={termToSearch} />
+                    <Router>
+                        <Switch>
+                            <Route path="/liked">
+                                <LikedGifs />
+                            </Route>
+                            <Route path="/">
+                                <GifFinder />
+                            </Route>
+                        </Switch>
+                    </Router>
                 </Container>
             </Paper>
         </Box>
